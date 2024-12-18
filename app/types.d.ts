@@ -1,0 +1,1 @@
+type IBooleanContext = [Boolean, React.Dispatch<React.SetStateAction<Boolean>>];

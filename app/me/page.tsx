@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FunctionComponent } from "react";
 
 interface mainProps {
@@ -7,17 +8,9 @@ interface mainProps {
 const main: FunctionComponent<mainProps> = () => {
     return (
         <div>
-            <header>
-                <h1>Header</h1>
-            </header>
+            <h1>Main</h1>
 
-            <main>
-                <h1>Main</h1>
-            </main>
-            
-            <footer>
-                <h1>Footer</h1>
-            </footer>
+            <Link href="/portfolio/iphone">iPhone</Link>                
         </div>
     );
 }
