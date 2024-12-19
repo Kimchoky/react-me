@@ -1,18 +1,22 @@
 'use client'
 
-import { FunctionComponent } from "react";
-import UiProvider from "./+hooks/UiProvider";
+import { FunctionComponent, useState } from "react";
+import UiProvider from "./_hooks/UiProvider";
+import ThemeProvider from "./_hooks/ThemeProvider";
 
 interface IRootProvider {
-    children: React.ReactNode
+    children: React.ReactNode,
 }
  
-const RootProvider: FunctionComponent<IRootProvider> = ({ children }) => {
+const RootProvider: FunctionComponent<IRootProvider> = ({ children, }) => {
+
     return (
         <>
+            <ThemeProvider>
             <UiProvider>
             {children}
             </UiProvider>
+            </ThemeProvider>
         </>
     );
 }

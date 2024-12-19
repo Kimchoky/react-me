@@ -1,10 +1,10 @@
 'use client'
 
 import { useContext, useState } from "react";
-import { UiContext } from "../app/+hooks/UiProvider";
-import AppIcon from "../app/+components/AppIcon";
-import Header from "../app/+common/Header";
-import Footer from "../app/+common/Footer";
+import { UiContext } from "./_hooks/UiProvider";
+import AppIcon from "./_components/AppIcon";
+import Header from "./_common/Header";
+import Footer from "./_common/Footer";
 import Link from "next/link";
 
 interface PageProps {

@@ -1,7 +1,7 @@
 'use client'
 
 import { useContext } from "react";
-import { UiContext } from "../+hooks/UiProvider";
+import { UiContext } from "../_hooks/UiProvider";
 
 interface AppIconProps {
     appIconColor: AppIconColorsKeyProp
