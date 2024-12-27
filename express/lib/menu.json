@@ -1,0 +1,29 @@
+[
+    {
+        "id": "about",
+        "name": "About",
+        "href": "/about"
+    },
+    {
+        "id": "portfolio",
+        "name": "Portfolio",
+        "href": "/portfolio",
+        "children": [
+            {
+                "id": "portfolio/iPhone",
+                "name": "iPhone",
+                "href": "iPhone"
+            }
+        ]
+    },
+    {
+        "id": "service",
+        "name": "Service",
+        "children": [
+            {
+                "id": "wip",
+                "name": "Work in progress"
+            }
+        ]
+    }
+]

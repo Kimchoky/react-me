@@ -1,7 +1,11 @@
 'use client'
 
 import Link from "next/link";
-import { menuList } from "../_lib/menuList";
+import { useContext, useEffect, useState } from "react";
+import Fetch from "../_lib/Fetch";
+import IconThemeLight from "../_assets/theme-sun.svg";
+import IconThemeDark from "../_assets/theme-moon.svg";
+import { ThemeContext } from "../_hooks/ThemeProvider";
 
 interface HeaderProps {
      
@@ -9,9 +13,24 @@ interface HeaderProps {
 
 export default function Header({  }: HeaderProps) {
 
+    const { theme, changeTheme, button } = useContext(ThemeContext);
+    const [ menuList, setMenuList ] =  useState<Array<MenuType>>([]);
+
+    useEffect(() => {
+        Fetch('/api/main/menu')
+        .then(r => setMenuList(r));
+    }, [])
+
     return (
-        <div className="border-dashed border-[.3em] border-green-700">
-            <div>
+        <div className={`
+            border-dashed border-[.3em] border-green-700
+            flex justify-between items-center flex-auto
+            `}
+        >
+            <div className={`
+                font-bold
+            `}
+            >
                 JUNGSOO, KIM
             </div>
 
@@ -37,7 +56,7 @@ export default function Header({  }: HeaderProps) {
             </div>
 
             <div>
-                
+                {button(IconThemeDark, IconThemeLight)}
             </div>
         </div>
     );

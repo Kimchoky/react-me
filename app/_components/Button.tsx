@@ -9,7 +9,7 @@ type ButtonCustomProps = {
 }
 type ButtonProps = {
     children?: string,
-    svg?: string | { src: string },
+    svg?: ImportedSvgFileType,
 } & ButtonCustomProps & ComponentPropsWithoutRef<'button'>;
 
 

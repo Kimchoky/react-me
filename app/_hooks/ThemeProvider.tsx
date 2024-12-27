@@ -1,9 +1,7 @@
 'use client'
 
-import { createContext, useCallback, useEffect, useMemo, useState } from "react"
+import React, { createContext, useCallback, useEffect, useMemo, useState } from "react"
 import Button from "../_components/Button";
-import IconThemeLight from "../_assets/theme-sun.svg";
-import IconThemeDark from "../_assets/theme-moon.svg";
 
 interface ThemeProviderProp {
     children: React.ReactNode,
@@ -11,7 +9,6 @@ interface ThemeProviderProp {
 
 type ThemeStr = 'dark'|'light';
 const DEFAULT_THEME = 'dark';
-const ICON = { light: IconThemeLight, dark: IconThemeDark, };
 const getTheme = (localTheme: string|undefined):ThemeStr => {
     if (localTheme && localTheme !== 'dark' || localTheme !== 'light')
         localTheme = undefined;
@@ -20,10 +17,12 @@ const getTheme = (localTheme: string|undefined):ThemeStr => {
     return currentTheme;
 }
 
-export const ThemeContext = createContext({
+const ThemeContextDeafult = {
     theme: DEFAULT_THEME,
-    changeTheme: (v?:ThemeStr)=>{}
-});
+    changeTheme: (v?:ThemeStr)=>{},
+    button: (d: ImportedSvgFileType, l: ImportedSvgFileType)=><></>
+}
+export const ThemeContext = createContext(ThemeContextDeafult);
 
 export default function ThemeProvider({ children, }: ThemeProviderProp) {
     
@@ -37,8 +36,10 @@ export default function ThemeProvider({ children, }: ThemeProviderProp) {
         localStorage.theme = newTheme;
 
     }, [theme]);
-
     const isDark = useMemo(() => theme === 'dark', [theme]); // derived
+    const button = (iconDark: ImportedSvgFileType, iconLight: ImportedSvgFileType) => {
+        return <Button onClick={()=>{changeTheme()}} svg={isDark ? iconDark : iconLight} bgColor="unset" color="currentColor"></Button>
+    }
 
     useEffect(() => {
         const currentTheme = getTheme(localStorage && localStorage.theme);
@@ -46,12 +47,11 @@ export default function ThemeProvider({ children, }: ThemeProviderProp) {
     }, [])
 
     return (
-        <ThemeContext.Provider value={{theme, changeTheme}}>
-            
-            <div className="border-dashed border-[.3em] border-red-300">
+        <ThemeContext.Provider value={{theme, changeTheme, button}}>
+            {/* <div className="border-dashed border-[.3em] border-red-300">
                 <span>ThemeProvider :: current theme: {theme}</span>
                 <Button onClick={()=>{changeTheme()}} svg={isDark ? IconThemeDark : IconThemeLight} bgColor="unset" color="currentColor"></Button>
-            </div>
+            </div> */}
             {children}
         </ThemeContext.Provider>
     )
