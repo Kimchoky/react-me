@@ -5,6 +5,11 @@
         "href": "/about"
     },
     {
+        "id": "blog",
+        "name": "Blog",
+        "href": "/blog"
+    },
+    {
         "id": "portfolio",
         "name": "Portfolio",
         "href": "/portfolio",

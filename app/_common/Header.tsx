@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
-import Fetch from "../_lib/Fetch";
 import IconThemeLight from "../_assets/theme-sun.svg";
 import IconThemeDark from "../_assets/theme-moon.svg";
 import { ThemeContext } from "../_hooks/ThemeProvider";
+import axios from "axios";
 
 interface HeaderProps {
      
@@ -13,12 +13,12 @@ interface HeaderProps {
 
 export default function Header({  }: HeaderProps) {
 
-    const { theme, changeTheme, button } = useContext(ThemeContext);
+    const { button } = useContext(ThemeContext);
     const [ menuList, setMenuList ] =  useState<Array<MenuType>>([]);
 
     useEffect(() => {
-        Fetch('/api/main/menu')
-        .then(r => setMenuList(r));
+        axios.get('/api/main/menu')
+        .then(r => setMenuList(r.data));
     }, [])
 
     return (
@@ -28,10 +28,12 @@ export default function Header({  }: HeaderProps) {
             `}
         >
             <div className={`
-                font-bold
+                font-extrabold text-lg
+                bg-gradient-to-br from-purple-500 to-blue-500
+                text-transparent bg-clip-text
             `}
             >
-                JUNGSOO, KIM
+                <Link href="/">{`<JUNGSOO, KIM/>`}</Link>
             </div>
 
             <div>
