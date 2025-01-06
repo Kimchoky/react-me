@@ -1,7 +1,7 @@
 'use client';
 
-import Button from '@/app/_components/Button';
-import Skeleton from '@/app/_components/Skeleton';
+import Button from '@components/Button';
+import Skeleton from '@components/Skeleton';
 import axios from 'axios';
 import Link from 'next/link';
 import { title } from 'process';

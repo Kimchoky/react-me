@@ -2,7 +2,7 @@
 
 import { useContext, useLayoutEffect, useState } from "react";
 import { UiContext } from "./_hooks/UiProvider";
-import AppIcon from "./_components/AppIcon";
+import AppIcon from "@components/AppIcon";
 import Header from "./_common/Header";
 import Footer from "./_common/Footer";
 import Link from "next/link";

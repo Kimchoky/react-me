@@ -13,9 +13,11 @@ const db = (() => {
 
     return {
         getInstance: () => instance,
-        destroy: () => { 
-            console.log('closing DB');
-            instance.close();
+        /** @param cb { function } */
+        destroy: async () => { 
+            console.log('\nclosing DB..');
+            instance && await instance.close();
+            console.log('DB closed');
         }
     }
 })();

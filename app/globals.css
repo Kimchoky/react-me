@@ -41,7 +41,10 @@
 }
 
 @layer components {
-
+  input, select, textarea {
+    color: var(--foreground-color);
+    background-color: var(--background-color);
+  }
 }
 
 

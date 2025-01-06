@@ -1,7 +1,7 @@
 'use client'
 
-import Button from '@/app/_components/Button';
-import Editor from '@/app/_components/Editor';
+import Button from '@components/Button';
+import Editor from '@components/Editor';
 import Link from 'next/link';
 import React, { useRef, useState } from 'react';
 import { toast } from 'react-toastify';

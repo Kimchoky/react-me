@@ -2,7 +2,7 @@
 const DEBUG = true;
 
 import React, { createContext, useCallback, useEffect, useMemo, useState } from "react"
-import Button from "../_components/Button";
+import Button from "@components/Button";
 
 interface ThemeProviderProp {
     children: React.ReactNode,
